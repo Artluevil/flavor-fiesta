@@ -6,7 +6,7 @@ interface RecipeComponent {
 
 const Recipe: React.FC<RecipeComponent> = (additionalProp: any) => {
 
-  console.log(additionalProp)
+  //console.log(additionalProp)
   return (
     <div><img src={additionalProp.additionalProp.recipe.image}/>
     <p>Recipe</p></div>

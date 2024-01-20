@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import RecipeBox from './components/RecipeBox';
 import Recipe from './pages/Recipe';
+import Homepage from './pages/Homepage';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
+import { createLink } from './functions/createLink';
 
 interface ApiResponse {
   data: any;
@@ -23,7 +25,7 @@ const App: React.FC = () => {
         }
 
         const data: ApiResponse = await response.json();
-        console.log(data)
+        //console.log(data)
         setApiData(data);
       } catch (error) {
         if (typeof error === "object" && error && "message" in error && typeof error.message === "string") {
@@ -36,10 +38,10 @@ const App: React.FC = () => {
     fetchData();
   }, []);
 
-  function createLink(recipeLabel: string) {
-    console.log(recipeLabel.replace(/\s+/g, ''))
-    return recipeLabel.replace(/\s+/g, '');
-  }
+  // function createLink(recipeLabel: string) {
+  //   console.log(recipeLabel.replace(/\s+/g, ''))
+  //   return recipeLabel.replace(/\s+/g, '');
+  // }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -56,6 +58,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/" element={<Homepage data={apiData}/>}/>
         {apiData.hits.map((recipeData: any) => <Route path={`/recipe/${createLink(recipeData.recipe.label)}`} element={<Recipe additionalProp={recipeData} />} />)}
       </Routes>
     </Router>
