@@ -1,0 +1,16 @@
+[
+    { "cuisine": "Italian" },
+    { "cuisine": "Japanese" },
+    { "cuisine": "American" },
+    { "cuisine": "Mexican" },
+    { "cuisine": "Mediterranean" },
+    { "cuisine": "Indian" },
+    { "cuisine": "Chinese" },
+    { "cuisine": "French" },
+    { "cuisine": "Middle Eastern" },
+    { "cuisine": "Greek" },
+    { "cuisine": "Korean" },
+    { "cuisine": "Nordic" },
+    { "cuisine": "Kosher" },
+    { "cuisine": "World" }
+  ]
