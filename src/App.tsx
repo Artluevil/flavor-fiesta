@@ -4,6 +4,7 @@ import Recipe from './pages/Recipe';
 import Homepage from './pages/Homepage';
 import Search from './components/Search';
 import RecipeHashtags from './components/RecipeHashtags';
+import SpecificFilter from './components/SpecificFilter';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import { createLink } from './functions/createLink';
 import './App.css'
@@ -21,6 +22,7 @@ const App: React.FC = () => {
   const [cuisineType, setCuisineType] = useState<string>("")
   const [currentSearch, setCurrentSearch] = useState<string>("")
   const [dishType, setDishType] = useState<string>("")
+  const [caloriesRange, setCaloriesRange] = useState<string>("")
 
   function getApiParams() {
     let params = ""
@@ -30,6 +32,9 @@ const App: React.FC = () => {
     if(dishType !== "") {
       params = params + "&dishType=" + dishType
     }
+    if(caloriesRange !== "") {
+      params = params + "&calories=" + caloriesRange
+    }
     console.log(params)
     return params
   }
@@ -38,7 +43,7 @@ const App: React.FC = () => {
     const fetchData = async () => {
       try {
         let response = await fetch('https://api.edamam.com/api/recipes/v2?type=public&app_id=910314ba&app_key=%20cc0b2a58b3b617ec5737f94f4cf48edd%09&diet=balanced')
-        if(cuisineType === "" && dishType === "") {
+        if(cuisineType === "" && dishType === "" && caloriesRange === "") {
           response = await fetch('https://api.edamam.com/api/recipes/v2?type=public&app_id=910314ba&app_key=%20cc0b2a58b3b617ec5737f94f4cf48edd%09&diet=balanced');
         } else {
           response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&app_id=910314ba&app_key=%20cc0b2a58b3b617ec5737f94f4cf48edd%09${getApiParams()}`);
@@ -62,7 +67,7 @@ const App: React.FC = () => {
       }
     };
     fetchData();
-  }, [cuisineType, dishType]);
+  }, [cuisineType, dishType, caloriesRange]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -75,6 +80,8 @@ const App: React.FC = () => {
   return (
     <Router>
       <Search setSearchValue={setSearchValue} searchValue={searchValue} setCurrentSearch={setCurrentSearch} setDishType={setDishType}/>
+      <SpecificFilter setCaloriesRange={setCaloriesRange}/>
+      <p>{caloriesRange}</p>
       <RecipeHashtags setCuisineType={setCuisineType}/>
       <Routes>
         <Route path="/" element={<Homepage data={apiData}/>}/>
