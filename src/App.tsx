@@ -23,6 +23,8 @@ const App: React.FC = () => {
   const [currentSearch, setCurrentSearch] = useState<string>("")
   const [dishType, setDishType] = useState<string>("")
   const [caloriesRange, setCaloriesRange] = useState<string>("")
+  const [dietType, setDietType] = useState<string>("")
+  const [healthType, setHealthType] = useState<string>("")
 
   function getApiParams() {
     let params = ""
@@ -34,6 +36,9 @@ const App: React.FC = () => {
     }
     if(caloriesRange !== "") {
       params = params + "&calories=" + caloriesRange
+    }
+    if(dietType !== "") {
+      params = params + "&diet=" + dietType
     }
     console.log(params)
     return params
@@ -79,9 +84,11 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <Search setSearchValue={setSearchValue} searchValue={searchValue} setCurrentSearch={setCurrentSearch} setDishType={setDishType}/>
-      <SpecificFilter setCaloriesRange={setCaloriesRange}/>
+      <Search setSearchValue={setSearchValue} searchValue={searchValue} setCurrentSearch={setCurrentSearch} setDishType={setDishType} dishType={dietType}/>
+      <SpecificFilter setCaloriesRange={setCaloriesRange} setDietType={setDietType} setHealthType={setHealthType} dietType={dietType} healthType={healthType}/>
       <p>{caloriesRange}</p>
+      <p>{dietType}</p>
+      <p>{healthType}</p>
       <RecipeHashtags setCuisineType={setCuisineType}/>
       <Routes>
         <Route path="/" element={<Homepage data={apiData}/>}/>

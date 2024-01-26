@@ -1,0 +1,26 @@
+[
+    {
+        "health": "alcohol-free",
+        "label": "Alcohol-Free"
+    },
+    {
+        "health": "dairy-free",
+        "label": "Dairy-Free"
+    },
+    {
+        "health": "gluten-free",
+        "label": "Gluten-Free"
+    },
+    {
+        "health": "keto-friendly",
+        "label": "Keto-Friendly"
+    },
+    {
+        "health": "peanut-free",
+        "label": "Peanut-Free"
+    },
+    {
+        "health": "vegan",
+        "label": "Vegan"
+    }
+]

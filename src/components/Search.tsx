@@ -6,20 +6,25 @@ interface SearchProps {
     setCurrentSearch: React.Dispatch<React.SetStateAction<string>>;
     setDishType: React.Dispatch<React.SetStateAction<string>>;
     searchValue: string;
+    dishType: string;
 }
 
 interface dishTypeInterface {
     dish: string;
 }
 
-const Search: React.FC<SearchProps> = ({ setSearchValue, searchValue, setCurrentSearch, setDishType }) => {
+const Search: React.FC<SearchProps> = ({ setSearchValue, searchValue, setCurrentSearch, setDishType, dishType }) => {
+
+    const [searchInputValue, setSearchInputValue] = useState<string>("")
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchValue(event.target.value)
+        setSearchInputValue(event.target.value)
     }
 
     const handlePromptClick = ( dishName: string) => {
         setDishType(dishName)
+        setSearchInputValue(dishName)
     }
 
     function showPrompts(dish: string) {
@@ -34,7 +39,7 @@ const Search: React.FC<SearchProps> = ({ setSearchValue, searchValue, setCurrent
     return (
         <>
             <div>
-                <input onChange={handleSearchChange} type="text" />
+                <input onChange={handleSearchChange} value={searchInputValue} type="text" />
                 <button onClick={searchButtonClick}>Search</button>
             </div>
             <div className="search-keys-container">{DishTypes.map((dishType: dishTypeInterface) => <p onClick={() => handlePromptClick(dishType.dish)}>{showPrompts(dishType.dish)}</p>)}</div>

@@ -1,0 +1,8 @@
+[
+    {"diet": "balanced", "label": "Balanced"},
+    {"diet": "high-fiber", "label": "High-Fiber"},
+    {"diet": "high-protein", "label": "High-Protein"},
+    {"diet": "low-carb", "label": "Low-Carb"},
+    {"diet": "low-fat", "label": "Low-Fat"},
+    {"diet": "low-sodium", "label": "Low-Sodium"}
+  ]

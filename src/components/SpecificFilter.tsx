@@ -1,11 +1,26 @@
 import React, { useState } from 'react'
-import FoodTypes from '../data/FoodTypes.json'
+import DietTypes from '../data/DietTypes.json'
+import HealthTypes from '../data/HealthTypes.json'
 
 interface SpecificFilterInterface {
     setCaloriesRange: React.Dispatch<React.SetStateAction<string>>;
+    setDietType: React.Dispatch<React.SetStateAction<string>>;
+    setHealthType: React.Dispatch<React.SetStateAction<string>>;
+    dietType: string;
+    healthType: string;
 }
 
-const SpecificFilter: React.FC<SpecificFilterInterface> = ({setCaloriesRange}) => {
+interface DietTypesInterface {
+    diet: string,
+    label: string,
+}
+
+interface HealthTypesInterface {
+    health: string,
+    label: string,
+}
+
+const SpecificFilter: React.FC<SpecificFilterInterface> = ({setCaloriesRange, setDietType, setHealthType, dietType, healthType}) => {
 
     const [caloriesFrom, setCaloriesFrom] = useState<string>("")
     const [caloriesTo, setCaloriesTo] = useState<string>("")
@@ -15,6 +30,13 @@ const SpecificFilter: React.FC<SpecificFilterInterface> = ({setCaloriesRange}) =
     }
     const handleToChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCaloriesTo(event.target.value)
+    }
+
+    const handleDietClick = (dietType: string) => {
+        setDietType(dietType)
+    }
+    const handleHealthClick = (healthType: string) => {
+        setHealthType(healthType)
     }
 
     const handleSearch = () => {
@@ -35,6 +57,10 @@ const SpecificFilter: React.FC<SpecificFilterInterface> = ({setCaloriesRange}) =
             </div>
             <div>
                 <button onClick={handleSearch}>Search</button>
+            </div>
+            <div>
+                {DietTypes.map((dietType: DietTypesInterface) => <div><span>{dietType.label}</span><input onClick={() => handleDietClick(dietType.diet)} type="checkbox"></input></div>)}
+                {HealthTypes.map((healthType: HealthTypesInterface) => <div><span>{healthType.label}</span><input onClick={() => handleHealthClick(healthType.health)} type="checkbox"></input></div>)}
             </div>
         </div>
     )
