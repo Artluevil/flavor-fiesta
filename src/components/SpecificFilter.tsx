@@ -20,7 +20,7 @@ interface HealthTypesInterface {
     label: string,
 }
 
-const SpecificFilter: React.FC<SpecificFilterInterface> = ({setCaloriesRange, setDietType, setHealthType, dietType, healthType}) => {
+const SpecificFilter: React.FC<SpecificFilterInterface> = ({ setCaloriesRange, setDietType, setHealthType, dietType, healthType }) => {
 
     const [caloriesFrom, setCaloriesFrom] = useState<string>("")
     const [caloriesTo, setCaloriesTo] = useState<string>("")
@@ -32,10 +32,15 @@ const SpecificFilter: React.FC<SpecificFilterInterface> = ({setCaloriesRange, se
         setCaloriesTo(event.target.value)
     }
 
-    const handleDietClick = (dietType: string) => {
+    const handleDietClick = (dietTypeProp: string) => {
+        if (dietType == "") {
+            setDietType(dietTypeProp)
+        } else {
+            setDietType(dietType + "")
+        }
         setDietType(dietType)
     }
-    const handleHealthClick = (healthType: string) => {
+    const handleHealthClick = (healthTypeProp: string) => {
         setHealthType(healthType)
     }
 
@@ -48,11 +53,18 @@ const SpecificFilter: React.FC<SpecificFilterInterface> = ({setCaloriesRange, se
                 <p>Calories</p>
                 <div>
                     <p>From</p>
-                    <input type="text" onChange={handleFromChange}/>
+                    <input type="text" onChange={handleFromChange} />
                 </div>
                 <div>
                     <p>To</p>
-                    <input type="text" onChange={handleToChange}/>
+                    <input type="text" onChange={handleToChange} />
+                </div>
+            </div>
+            <div>
+                <p>Ingredients</p>
+                <div>
+                    <p>Up to</p>
+                    <input type="text"></input>
                 </div>
             </div>
             <div>
