@@ -1,4 +1,5 @@
 import React from 'react'
+import { formatString } from '../functions/formatString';
 
 interface RecipeComponent {
   additionalProp: React.ReactNode;
@@ -6,10 +7,6 @@ interface RecipeComponent {
 
 const Recipe: React.FC<RecipeComponent> = (additionalProp: any) => {
 
-  function formatString(targetString: string) {
-    let cutoffString = targetString.split('.')[0]
-    return cutoffString
-  }
 
   let recipe = additionalProp.additionalProp.recipe
 

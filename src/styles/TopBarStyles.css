@@ -1,0 +1,21 @@
+.logo-container img {
+    width: 150px;
+}
+
+.top-bar-wrapper {
+    display: flex;
+}
+
+.top-bar-wrapper div {
+    flex-grow: 2
+}
+
+.logo-container {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: -20px;
+}
+
+.search-container {
+    margin-top: 40px;
+}

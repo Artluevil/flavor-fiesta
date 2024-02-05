@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage';
 import Search from './components/Search';
 import RecipeHashtags from './components/RecipeHashtags';
 import SpecificFilter from './components/SpecificFilter';
+import TopBar from './components/TopBar'
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import { createLink } from './functions/createLink';
 import './App.css'
@@ -84,7 +85,7 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <Search setSearchValue={setSearchValue} searchValue={searchValue} setCurrentSearch={setCurrentSearch} setDishType={setDishType} dishType={dietType}/>
+      <TopBar setSearchValue={setSearchValue} searchValue={searchValue} setCurrentSearch={setCurrentSearch} setDishType={setDishType} dishType={dietType}/>
       <SpecificFilter setCaloriesRange={setCaloriesRange} setDietType={setDietType} setHealthType={setHealthType} dietType={dietType} healthType={healthType}/>
       <p>{caloriesRange}</p>
       <p>{dietType}</p>

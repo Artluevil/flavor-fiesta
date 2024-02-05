@@ -1,5 +1,6 @@
 import React from 'react'
 import FoodTypes from '../data/FoodTypes.json'
+import '../styles/RecipeHashtagsStyles.css'
 
 interface FoodTypesData {
     cuisine: string;

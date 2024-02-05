@@ -1,0 +1,10 @@
+.recipes-box-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 20px;
+    margin-top: 20px;
+}
+
+.recipes-box-wrapper .recipe-box-container {
+    flex-wrap: nowrap
+}

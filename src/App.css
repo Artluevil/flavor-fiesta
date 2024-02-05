@@ -2,3 +2,9 @@
   display: inline-block;
   margin-left: 10px;;
 }
+
+.specific-filter-container {
+  background: gray;
+  margin-top: -20px;
+}
+

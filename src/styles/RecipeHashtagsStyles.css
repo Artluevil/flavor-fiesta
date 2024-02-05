@@ -1,0 +1,12 @@
+.cuisine-container {
+    width: fit-content;
+    padding: 0px 10px;
+    background: rgb(247, 247, 247);
+    height: fit-content;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.cuisine-container p {
+    font-size: 12px;
+}

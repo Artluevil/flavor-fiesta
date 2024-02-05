@@ -1,0 +1,13 @@
+.specific-filter-btn-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.specific-filter-btn-container div {
+    text-align: center;
+    margin-left: 120px;
+}
